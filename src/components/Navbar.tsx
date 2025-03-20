@@ -1,7 +1,7 @@
 import { ThemeToggle } from "./ThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Eye } from "lucide-react";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -64,17 +64,33 @@ const Navbar = () => {
                     <AnimatePresence>
                         {isOpen && (
                             <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="md:hidden border-t border-border/40 overflow-hidden"
+                                initial={{ opacity: 0, x: "100%" }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: "100%" }}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                className="fixed inset-0 top-[3.5rem] md:hidden bg-background/95 backdrop-blur-md border-t border-border/40 dark:border-border/75"
                             >
-                                <div className="flex flex-col items-stretch py-2">
-                                    <MobileNavButton onClick={() => scrollToSection('principal')} label="Principal" />
-                                    <MobileNavButton onClick={() => scrollToSection('sobre')} label="Sobre" />
-                                    <MobileNavButton onClick={() => scrollToSection('skills')} label="Skills" />
-                                    <MobileNavButton onClick={() => scrollToSection('projetos')} label="Projetos" />
+                                <div className="flex flex-col items-stretch min-h-[calc(100vh-3.5rem)]">
+                                    <div className="flex flex-col items-stretch divide-y divide-border/20 dark:divide-border/40">
+                                        <MobileNavButton onClick={() => scrollToSection('principal')} label="Principal" />
+                                        <MobileNavButton onClick={() => scrollToSection('sobre')} label="Sobre" />
+                                        <MobileNavButton onClick={() => scrollToSection('skills')} label="Skills" />
+                                        <MobileNavButton onClick={() => scrollToSection('projetos')} label="Projetos" />
+                                    </div>
+                                    <div className="mt-auto border-t border-border/40 dark:border-border/75 p-8">
+                                        <motion.a 
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.2 }}
+                                            href="https://github.com/devangolano"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center justify-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
+                                        >
+                                            <img src="/githublogo.png" alt="GitHub" className="w-6 h-6" />
+                                            <span className="text-base font-medium">devangolano</span>
+                                        </motion.a>
+                                    </div>
                                 </div>
                             </motion.div>
                         )}
@@ -99,11 +115,19 @@ const NavButton = ({ onClick, label }: { onClick: () => void; label: string }) =
 
 const MobileNavButton = ({ onClick, label }: { onClick: () => void; label: string }) => (
     <motion.button
+        whileHover={{ backgroundColor: "rgba(var(--foreground), 0.05)" }}
         whileTap={{ scale: 0.98 }}
         onClick={onClick}
-        className="w-full px-4 md:px-8 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all text-left"
+        className="w-full px-8 py-6 text-lg font-medium text-muted-foreground hover:text-foreground transition-all text-left flex items-center justify-between"
     >
         {label}
+        <motion.span
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-foreground/40"
+        >
+            <Eye size={20} />
+        </motion.span>
     </motion.button>
 );
 
