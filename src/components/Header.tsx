@@ -11,7 +11,7 @@ const Header = () => {
                 <div className="absolute -bottom-20 right-0 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-yellow-500/5 rounded-full blur-3xl animate-pulse delay-700" />
             </div>
 
-            <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative py-12 md:-py-10">
+            <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative py-8 md:-py-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                     <motion.div className="flex flex-col gap-4 md:gap-6 order-2 md:order-1">
                         <motion.div 
