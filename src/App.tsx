@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             style={{ maskImage: 'linear-gradient(to bottom, black, transparent)' }}
           />
           <Navbar />
+          <Header />
         </div>
       </ThemeProvider>
     </BrowserRouter>

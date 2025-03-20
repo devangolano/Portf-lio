@@ -32,7 +32,7 @@ const Navbar = () => {
                 transition={{ duration: 0.5 }}
                 className="fixed top-4 md:top-8 w-full z-[100] px-2 md:px-4"
             >
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-6xl mx-auto">
                     <div className="bg-background/40 backdrop-blur-md rounded-xl md:rounded-2xl border border-border/40 dark:border-border/75 shadow-xl">
                         <div className="flex items-center justify-between h-[3.5rem] md:h-[4.5rem] px-4 md:px-8">
                             <motion.div 
